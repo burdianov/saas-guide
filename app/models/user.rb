@@ -7,18 +7,18 @@ class User < ActiveRecord::Base
   validate :email_is_unique, on: :create
   after_create :create_account
 
-  def confirmation_required?
-    false
-  end
+  # def confirmation_required?
+  #   false
+  # end
 
   private
 
   def email_is_unique
     return false unless self.errors[:email].empty?
 
-    unless Account.find_by_email(email).nil?
-      errors.add(:email, " is already in use")
-    end
+    # unless Account.find_by_email(email).nil?
+    #   errors.add(:email, " is already in use")
+    # end
   end
 
   def create_account
